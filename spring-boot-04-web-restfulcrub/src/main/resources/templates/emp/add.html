@@ -73,6 +73,7 @@
 <!--                        修改时要发送put请求，put相当于update，post相当于insert-->
 <!--                    <form>-->
                         <input type="hidden" name="method" value="put" th:if="${emp!=null}">
+                        <input type="hidden" name="id"  th:if="${emp!=null}" th:value="${emp.id}">
                         <div class="form-group">
                             <label>LastName</label>
                             <input name="lastName" type="text" class="form-control" placeholder="zhangsan" th:value="${emp != null}?${emp.lastName}">

@@ -63,7 +63,8 @@ public class EmployeeController {
         //二合一页面
         return "emp/add";
     }
-    @PutMapping(/emp)
+    //需要提交员工id
+    @PutMapping("/emp")
     public String updataEmployee(Employee employee){
         System.out.println("修改数据:"+employee);
         employeeDao.save(employee);
