@@ -2,6 +2,8 @@ package cn.edu.springboot.config;
 
 import cn.edu.springboot.component.LoginHandlerInterceptor;
 import cn.edu.springboot.component.MyLocaleResolver;
+import org.springframework.boot.web.server.ConfigurableWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -18,6 +20,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //}
 @Configuration
 public class MyMvcConfig implements WebMvcConfigurer {
+
+    @Bean
+    public WebServerFactoryCustomizer webServerFactoryCustomizer(){
+        return new WebServerFactoryCustomizer<ConfigurableWebServerFactory>(){//记得加()，否则错
+            @Override
+            public void customize(ConfigurableWebServerFactory factory){
+                factory.setPort(8088);
+            }
+        };
+
+    }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
